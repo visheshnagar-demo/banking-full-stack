@@ -1,4 +1,4 @@
-import { BankOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { AlertOutlined, BankOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Layout, Menu } from "antd";
 import React, { useContext } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -40,6 +40,10 @@ const DashboardLayout: React.FC = () => {
     }
   };
 
+  const selectedKey = location.pathname.startsWith("/")
+    ? location.pathname.substring(1)
+    : location.pathname;
+
   return (
     <Layout className={styles.layout}>
       <Sider>
@@ -51,9 +55,20 @@ const DashboardLayout: React.FC = () => {
         <Menu
           theme="dark"
           mode="inline"
-          selectedKeys={[location.pathname.replace("/", "")]}
+          selectedKeys={[selectedKey]}
           onClick={(e) => navigate(`/${e.key}`)}
-          items={[{ key: "dashboard/accounts", label: "Hesaplar", icon: <BankOutlined /> }]}
+          items={[
+            {
+              key: "dashboard/accounts",
+              label: "Hesaplar (Accounts)",
+              icon: <BankOutlined />
+            },
+            {
+              key: "dashboard/alerts",
+              label: "Fraud Alerts",
+              icon: <AlertOutlined />
+            }
+          ]}
         />
       </Sider>
 

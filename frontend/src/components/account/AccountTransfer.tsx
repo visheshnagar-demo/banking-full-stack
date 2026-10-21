@@ -40,7 +40,7 @@ const AccountTransfer = ({ transfer }: { transfer: (account: TransferForm) => vo
       transfer(transferObject);
 
       form.resetFields();
-    } catch (error: any) {
+    } catch {
       messageApi?.open({
         type: "error",
         content: "Transfer sırasında hata oluştu."
@@ -83,13 +83,15 @@ const AccountTransfer = ({ transfer }: { transfer: (account: TransferForm) => vo
           { type: "number", min: 0.01, message: "Tutar 0'dan büyük olmalı" }
         ]}
       >
-        <InputNumber
+        <InputNumber<number>
           style={{ width: "100%" }}
-          min={0.01}
+          min={0.01 as number}
           step={0.01}
           placeholder="Transfer tutarı"
-          formatter={(value) => (value ? `${value} ₺` : "")}
-          parser={(value) => (value ? value.replace(/₺\s?|(,*)/g, "") : "")}
+          formatter={(value) => (value !== undefined && value !== null ? `${value} ₺` : "")}
+          parser={(value) =>
+            value ? (parseFloat(value.replace(/₺\s?|(,*)/g, "")) as number) : (0 as number)
+          }
         />
       </Form.Item>
 

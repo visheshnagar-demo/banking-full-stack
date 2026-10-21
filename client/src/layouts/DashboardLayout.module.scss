@@ -1,0 +1,32 @@
+.layout {
+  min-height: 100vh;
+
+  & .header {
+    background-color: var(--layout-header-background);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  & .content {
+    padding: 1.5rem;
+  }
+
+  & .headerRight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  & .logo {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: var(--logo-background);
+    margin-bottom: 1rem;
+  }
+}

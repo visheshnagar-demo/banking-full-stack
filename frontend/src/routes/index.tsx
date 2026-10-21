@@ -5,6 +5,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import Accounts from "../pages/dashboard/Accounts/Accounts";
+import FraudAlertsPage from "../pages/dashboard/FraudAlerts/FraudAlertsPage";
 
 export const routes: RouteObject[] = [
   {
@@ -23,6 +24,7 @@ export const routes: RouteObject[] = [
         children: [
           { element: <Navigate to="accounts" />, index: true },
           { path: "accounts", element: <Accounts /> },
+          { path: "alerts", element: <FraudAlertsPage /> },
           { path: "profile", element: <>Profile</> }
         ]
       }
@@ -30,3 +32,5 @@ export const routes: RouteObject[] = [
   },
   { path: "*", element: <Navigate to="/login" /> }
 ];
+
+export default routes;

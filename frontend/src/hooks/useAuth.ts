@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import userService from "../api/UserService";
 import type { AuthInfo } from "../types/auth";
@@ -19,13 +19,11 @@ const useAuth = (updateAuthInfo: React.Dispatch<React.SetStateAction<AuthInfo | 
         setLoadingAuth(false);
       }
     })();
-  }, []);
+  }, [navigate, updateAuthInfo]);
+
   return {
     isLoadingAuth
   };
 };
 
 export default useAuth;
-("CAP");
-("Elastic search");
-("Kafka", "Rabbitmq", "Event Sourching", "Bankacılık", "Kubernates", "Load Balancer");

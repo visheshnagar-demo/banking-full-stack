@@ -1,0 +1,13 @@
+@use "./base/base" as *;
+
+body {
+  font-family: $font-primary;
+
+  &.light {
+    --layout-header-background: #{$logo-background};
+    --logo-background: #{$logo-background};
+  }
+
+  &.dark {
+  }
+}
